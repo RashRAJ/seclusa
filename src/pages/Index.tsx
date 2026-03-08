@@ -316,7 +316,7 @@ const Index = () => (
     <Section>
       <div className="relative h-[50vh] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
+          src={student3Image}
           alt="People working together"
           className="w-full h-full object-cover"
           loading="lazy"
