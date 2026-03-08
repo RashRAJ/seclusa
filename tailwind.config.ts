@@ -56,7 +56,11 @@ export default {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+  			'advocacy-red': 'hsl(var(--advocacy-red))',
+  			'hope-gold': 'hsl(var(--hope-gold))',
+  			'healing-blue': 'hsl(var(--healing-blue))',
+  			'empowerment-purple': 'hsl(var(--empowerment-purple))'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
