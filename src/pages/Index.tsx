@@ -186,7 +186,8 @@ const Index = () => {
               <div className="relative group">
                 <div className="aspect-[4/5] bg-muted overflow-hidden">
                   <img
-                    src={studeimg.about                 alt="SECLUSA founder"
+                    src={img.about}
+                    alt="SECLUSA founder"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
