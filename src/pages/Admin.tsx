@@ -831,6 +831,133 @@ const Admin = () => {
             </motion.div>
           </TabsContent>
 
+          {/* Images */}
+          <TabsContent value="images" className="space-y-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+              <Card className="rounded-none border-border shadow-sm">
+                <CardHeader className="border-b border-border bg-muted/30">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-advocacy-red/10 flex items-center justify-center">
+                      <ImageIcon className="w-5 h-5 text-advocacy-red" />
+                    </div>
+                    <div>
+                      <CardTitle className="font-display">Homepage Images</CardTitle>
+                      <CardDescription>Upload custom images for the homepage sections. Max 2MB per image.</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-6 pt-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <ImageUpload
+                      label="Hero Background"
+                      value={content.images.heroImage}
+                      defaultImage={defaultImages.heroImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, heroImage: v } }))
+                      }
+                    />
+                    <ImageUpload
+                      label="About Section"
+                      value={content.images.aboutImage}
+                      defaultImage={defaultImages.aboutImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, aboutImage: v } }))
+                      }
+                    />
+                    <ImageUpload
+                      label="Founders / Why We Started"
+                      value={content.images.foundersImage}
+                      defaultImage={defaultImages.foundersImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, foundersImage: v } }))
+                      }
+                    />
+                    <ImageUpload
+                      label="Together We Thrive Banner"
+                      value={content.images.togetherThriveImage}
+                      defaultImage={defaultImages.togetherThriveImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, togetherThriveImage: v } }))
+                      }
+                    />
+                    <ImageUpload
+                      label="Community Section"
+                      value={content.images.communityImage}
+                      defaultImage={defaultImages.communityImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, communityImage: v } }))
+                      }
+                    />
+                    <ImageUpload
+                      label="Services Page Hero"
+                      value={content.images.servicesHeroImage}
+                      defaultImage={defaultImages.servicesHeroImage}
+                      onChange={(v) =>
+                        setContent((p) => ({ ...p, images: { ...p.images, servicesHeroImage: v } }))
+                      }
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }}>
+              <Card className="rounded-none border-border shadow-sm">
+                <CardHeader className="border-b border-border bg-muted/30">
+                  <CardTitle className="font-display">Team Member Photos</CardTitle>
+                  <CardDescription>Replace individual team member photos</CardDescription>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {content.team.members.map((member, i) => (
+                      <ImageUpload
+                        key={i}
+                        label={member.name || `Team Member ${i + 1}`}
+                        value={content.images.teamImages[i] || ""}
+                        defaultImage={defaultTeamImages[i]}
+                        onChange={(v) =>
+                          setContent((p) => {
+                            const newTeamImages = [...p.images.teamImages];
+                            newTeamImages[i] = v;
+                            return { ...p, images: { ...p.images, teamImages: newTeamImages } };
+                          })
+                        }
+                      />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}>
+              <Card className="rounded-none border-border shadow-sm">
+                <CardHeader className="border-b border-border bg-muted/30">
+                  <CardTitle className="font-display">Gallery Images</CardTitle>
+                  <CardDescription>Replace gallery images on the Services page</CardDescription>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    {defaultGalleryImages.map((defaultImg, i) => (
+                      <ImageUpload
+                        key={i}
+                        label={`Gallery ${i + 1}`}
+                        value={content.images.galleryImages[i] || ""}
+                        defaultImage={defaultImg}
+                        onChange={(v) =>
+                          setContent((p) => {
+                            const newGalleryImages = [...p.images.galleryImages];
+                            newGalleryImages[i] = v;
+                            return { ...p, images: { ...p.images, galleryImages: newGalleryImages } };
+                          })
+                        }
+                      />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </TabsContent>
+
           {/* Analytics */}
           <TabsContent value="analytics" className="space-y-6">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
