@@ -9,6 +9,33 @@ import { getContent, saveContent, resetContent, SiteContent, defaultContent } fr
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import logo from "@/assets/logo.png";
+import ImageUpload from "@/components/ImageUpload";
+
+import student1Image from "@/assets/student1.jpg";
+import student2Image from "@/assets/student2.jpg";
+import foundersImage from "@/assets/founders.webp";
+import togetherThriveImage from "@/assets/together-thrive.jpg";
+import founderImage from "@/assets/founder.jpg";
+import cofounderImage from "@/assets/cofounder.jpg";
+import teamMuhammadImage from "@/assets/team-muhammad.jpg";
+import teamFavourImage from "@/assets/team-favour.jpg";
+import eventsImage from "@/assets/events.jpg";
+import giftBagsImage from "@/assets/gift-bags.jpg";
+import chinchinImage from "@/assets/chinchin.jpg";
+import giftBoxesImage from "@/assets/gift-boxes.jpg";
+import pyramidBoxesImage from "@/assets/pyramid-boxes.jpg";
+
+const defaultImages = {
+  heroImage: student1Image,
+  aboutImage: student2Image,
+  foundersImage: foundersImage,
+  togetherThriveImage: togetherThriveImage,
+  communityImage: foundersImage,
+  servicesHeroImage: eventsImage,
+};
+
+const defaultTeamImages = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
+const defaultGalleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
 
 const ADMIN_EMAIL = "seclusa.org@gmail.com";
 const ADMIN_PASSWORD = "SECLUSA";
