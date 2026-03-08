@@ -300,15 +300,25 @@ const Index = () => (
 
         {services.map((s, i) => (
           <Section key={s.number} delay={i * 0.1}>
-            <div className={`grid md:grid-cols-12 gap-8 py-12 ${i < services.length - 1 ? "border-b border-border" : ""} group`}>
-              <div className="md:col-span-1">
+            <div className={`grid md:grid-cols-12 gap-8 py-12 items-center ${i < services.length - 1 ? "border-b border-border" : ""} group`}>
+              <div className="md:col-span-3">
+                <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-1 hidden md:flex items-center justify-center">
                 <s.icon className="w-6 h-6 text-advocacy-red" />
               </div>
-              <div className="md:col-span-4">
+              <div className="md:col-span-3">
                 <span className="text-4xl font-display font-bold text-advocacy-red/30">{s.number}</span>
                 <h3 className="text-2xl font-display mt-2">{s.title}</h3>
               </div>
-              <div className="md:col-span-7">
+              <div className="md:col-span-5">
                 <p className="text-muted-foreground leading-relaxed">{s.description}</p>
               </div>
             </div>
