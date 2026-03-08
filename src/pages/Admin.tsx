@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Plus, Trash2, Home, MessageSquare, Phone, Briefcase, UserCircle, Sparkles } from "lucide-react";
+import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Plus, Trash2, Home, MessageSquare, Phone, Briefcase, UserCircle, Sparkles, Image as ImageIcon } from "lucide-react";
 import { getContent, saveContent, resetContent, SiteContent, defaultContent } from "@/lib/content";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
