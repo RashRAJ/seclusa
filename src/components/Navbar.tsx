@@ -7,7 +7,6 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { to: "#home", label: "Home", isAnchor: true },
   { to: "/services", label: "Services", isAnchor: false },
-  { to: "#team", label: "Team", isAnchor: true },
   { to: "#community", label: "Join Us", isAnchor: true },
 ];
 
