@@ -9,6 +9,9 @@ import founderImage from "@/assets/founder.jpg";
 import cofounderImage from "@/assets/cofounder.jpg";
 import teamMuhammadImage from "@/assets/team-muhammad.jpg";
 import teamFavourImage from "@/assets/team-favour.jpg";
+import student1Image from "@/assets/student1.jpg";
+import student2Image from "@/assets/student2.jpg";
+import student3Image from "@/assets/student3.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
