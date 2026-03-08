@@ -68,7 +68,7 @@ const Services = () => {
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={eventsImage}
+                  src={servicesHeroImg}
                   alt="SECLUSA community event"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
