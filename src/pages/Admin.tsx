@@ -283,6 +283,10 @@ const Admin = () => {
               <Briefcase className="w-4 h-4" />
               <span className="hidden sm:inline">Services</span>
             </TabsTrigger>
+            <TabsTrigger value="images" className="flex items-center gap-2 data-[state=active]:bg-advocacy-red data-[state=active]:text-white rounded-none px-4">
+              <ImageIcon className="w-4 h-4" />
+              <span className="hidden sm:inline">Images</span>
+            </TabsTrigger>
             <TabsTrigger value="analytics" className="flex items-center gap-2 data-[state=active]:bg-advocacy-red data-[state=active]:text-white rounded-none px-4">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
