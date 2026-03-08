@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { to: "#home", label: "Home" },
-  { to: "#team", label: "Team" },
-  { to: "#community", label: "Join Us" },
+  { to: "#home", label: "Home", isAnchor: true },
+  { to: "/services", label: "Services", isAnchor: false },
+  { to: "#team", label: "Team", isAnchor: true },
+  { to: "#community", label: "Join Us", isAnchor: true },
 ];
 
 const Navbar = () => {
