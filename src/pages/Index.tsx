@@ -97,7 +97,7 @@ const Index = () => (
         className="absolute top-0 right-0 w-1/3 h-full hidden lg:block overflow-hidden"
       >
         <img
-          src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80"
+          src={student1Image}
           alt="Community support"
           className="w-full h-full object-cover mix-blend-multiply opacity-40"
         />
