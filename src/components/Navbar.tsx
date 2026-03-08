@@ -13,11 +13,18 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const handleClick = (hash: string) => {
+  const handleClick = (hash: string, isAnchor: boolean) => {
     setOpen(false);
-    const el = document.querySelector(hash);
-    el?.scrollIntoView({ behavior: "smooth" });
+    if (isAnchor) {
+      if (location.pathname !== "/") {
+        window.location.href = "/" + hash;
+      } else {
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
