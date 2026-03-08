@@ -89,7 +89,7 @@ const AnimatedStat = ({ value, label, delay }: { value: string; label: string; d
   );
 };
 
-const teamImages = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
+const teamImagesDefaults = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
 
 const Index = () => {
   const [content, setContent] = useState<SiteContent | null>(null);
@@ -99,6 +99,16 @@ const Index = () => {
   }, []);
 
   if (!content) return null;
+
+  // Use custom images if set, otherwise use defaults
+  const img = {
+    hero: content.images.heroImage || student1Image,
+    about: content.images.aboutImage || student2Image,
+    founders: content.images.foundersImage || foundersImage,
+    togetherThrive: content.images.togetherThriveImage || togetherThriveImage,
+    community: content.images.communityImage || foundersImage,
+    teamImages: content.images.teamImages.map((t, i) => t || teamImagesDefaults[i] || founderImage),
+  };
 
   return (
     <div>
@@ -145,7 +155,7 @@ const Index = () => {
           className="absolute top-0 right-0 w-1/3 h-full hidden lg:block overflow-hidden"
         >
           <img
-            src={student1Image}
+            src={img.hero}
             alt="Community support"
             className="w-full h-full object-cover mix-blend-multiply opacity-40"
           />
@@ -176,7 +186,7 @@ const Index = () => {
               <div className="relative group">
                 <div className="aspect-[4/5] bg-muted overflow-hidden">
                   <img
-                    src={student2Image}
+                    src={img.about}
                     alt="SECLUSA founder"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
@@ -231,7 +241,7 @@ const Index = () => {
               </div>
               <div className="aspect-square bg-muted overflow-hidden group">
                 <img
-                  src={foundersImage}
+                  src={img.founders}
                   alt="SECLUSA Founder and Co-Founder"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
@@ -261,7 +271,7 @@ const Index = () => {
                 <div className="group">
                   <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
                     <img
-                      src={teamImages[i] || founderImage}
+                      src={img.teamImages[i]}
                       alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
@@ -281,7 +291,7 @@ const Index = () => {
       <Section>
         <div className="relative h-[50vh] overflow-hidden group">
           <img
-            src={togetherThriveImage}
+            src={img.togetherThrive}
             alt="Women united together"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
@@ -369,7 +379,7 @@ const Index = () => {
             <Section delay={0.3}>
               <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden group relative">
                 <img
-                  src={foundersImage}
+                  src={img.community}
                   alt="Community members"
                   className="w-full h-full object-cover mix-blend-luminosity opacity-60 transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"

@@ -26,7 +26,7 @@ const Section = ({ children, className = "", delay = 0 }: { children: React.Reac
 };
 
 const serviceIcons = [BookOpen, Users, Lightbulb, Sparkles, Heart];
-const galleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
+const defaultGalleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
 
 const Services = () => {
   const [content, setContent] = useState<SiteContent | null>(null);
@@ -36,6 +36,9 @@ const Services = () => {
   }, []);
 
   if (!content) return null;
+
+  const servicesHeroImg = content.images.servicesHeroImage || eventsImage;
+  const gallery = defaultGalleryImages.map((def, i) => content.images.galleryImages[i] || def);
 
   return (
     <div className="pt-24">
@@ -65,7 +68,7 @@ const Services = () => {
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={eventsImage}
+                  src={servicesHeroImg}
                   alt="SECLUSA community event"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -113,7 +116,7 @@ const Services = () => {
             </h2>
           </Section>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {galleryImages.map((img, i) => (
+            {gallery.map((img, i) => (
               <Section key={i} delay={i * 0.1}>
                 <div className="aspect-square overflow-hidden bg-muted">
                   <img

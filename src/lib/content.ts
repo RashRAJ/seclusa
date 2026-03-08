@@ -54,6 +54,8 @@ export interface SiteContent {
     togetherThriveImage: string;
     communityImage: string;
     servicesHeroImage: string;
+    teamImages: string[];
+    galleryImages: string[];
   };
 }
 
@@ -129,6 +131,8 @@ const defaultContent: SiteContent = {
     togetherThriveImage: "",
     communityImage: "",
     servicesHeroImage: "",
+    teamImages: ["", "", "", ""],
+    galleryImages: ["", "", "", "", ""],
   },
 };
 
