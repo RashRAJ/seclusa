@@ -12,6 +12,11 @@ import teamFavourImage from "@/assets/team-favour.jpg";
 import student1Image from "@/assets/student1.jpg";
 import student2Image from "@/assets/student2.jpg";
 import student3Image from "@/assets/student3.jpg";
+import giftBoxesImage from "@/assets/gift-boxes.jpg";
+import chinchinImage from "@/assets/chinchin.jpg";
+import eventsImage from "@/assets/events.jpg";
+import pyramidBoxesImage from "@/assets/pyramid-boxes.jpg";
+import giftBagsImage from "@/assets/gift-bags.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
@@ -37,11 +42,11 @@ const stats = [
 ];
 
 const services = [
-  { number: "01", title: "Sickle Cell Education & Awareness", description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.", icon: BookOpen },
-  { number: "02", title: "Community Support Network", description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.", icon: Users },
-  { number: "03", title: "Entrepreneurship & Skill Empowerment", description: "We provide practical skill training to help people become more financially independent, including baking training and packaging education.", icon: Lightbulb },
-  { number: "04", title: "Baking Training & Products", description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income.", icon: Sparkles },
-  { number: "05", title: "Packaging Skills & Presentation", description: "We teach small business owners how to package their products professionally so they can attract more customers.", icon: Heart },
+  { number: "01", title: "Sickle Cell Education & Awareness", description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.", icon: BookOpen, image: eventsImage },
+  { number: "02", title: "Community Support Network", description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.", icon: Users, image: giftBagsImage },
+  { number: "03", title: "Entrepreneurship & Skill Empowerment", description: "We provide practical skill training to help people become more financially independent, including baking training and packaging education.", icon: Lightbulb, image: chinchinImage },
+  { number: "04", title: "Baking Training & Products", description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income.", icon: Sparkles, image: giftBoxesImage },
+  { number: "05", title: "Packaging Skills & Presentation", description: "We teach small business owners how to package their products professionally so they can attract more customers.", icon: Heart, image: pyramidBoxesImage },
 ];
 
 const testimonials = [
@@ -295,15 +300,25 @@ const Index = () => (
 
         {services.map((s, i) => (
           <Section key={s.number} delay={i * 0.1}>
-            <div className={`grid md:grid-cols-12 gap-8 py-12 ${i < services.length - 1 ? "border-b border-border" : ""} group`}>
-              <div className="md:col-span-1">
+            <div className={`grid md:grid-cols-12 gap-8 py-12 items-center ${i < services.length - 1 ? "border-b border-border" : ""} group`}>
+              <div className="md:col-span-3">
+                <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-1 hidden md:flex items-center justify-center">
                 <s.icon className="w-6 h-6 text-advocacy-red" />
               </div>
-              <div className="md:col-span-4">
+              <div className="md:col-span-3">
                 <span className="text-4xl font-display font-bold text-advocacy-red/30">{s.number}</span>
                 <h3 className="text-2xl font-display mt-2">{s.title}</h3>
               </div>
-              <div className="md:col-span-7">
+              <div className="md:col-span-5">
                 <p className="text-muted-foreground leading-relaxed">{s.description}</p>
               </div>
             </div>
