@@ -1,101 +1,151 @@
-import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Heart, Users, Sparkles, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import giftBoxesImage from "@/assets/gift-boxes.jpg";
+import chinchinImage from "@/assets/chinchin.jpg";
+import pyramidBoxesImage from "@/assets/pyramid-boxes.jpg";
+import eventsImage from "@/assets/events.jpg";
+import giftBagsImage from "@/assets/gift-bags.jpg";
+
+const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const services = [
-  {
-    number: "01",
-    title: "Sickle Cell Education & Awareness",
-    description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.",
+  { 
+    number: "01", 
+    title: "Sickle Cell Education & Awareness", 
+    description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.", 
+    icon: BookOpen,
+    hasImage: false
   },
-  {
-    number: "02",
-    title: "Community Support Network",
-    description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.",
+  { 
+    number: "02", 
+    title: "Community Support Network", 
+    description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.", 
+    icon: Users,
+    hasImage: false
   },
-  {
-    number: "03",
-    title: "Entrepreneurship & Skill Empowerment",
-    description: "We provide practical skill training to help people become more financially independent. This includes baking training and packaging education for small businesses.",
+  { 
+    number: "03", 
+    title: "Entrepreneurship & Skill Empowerment", 
+    description: "We provide practical skill training to help people become more financially independent, including baking training and packaging education.", 
+    icon: Lightbulb,
+    hasImage: true,
+    image: chinchinImage
   },
-  {
-    number: "04",
-    title: "Baking Training & Products",
-    description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income. We also showcase baked goods made through our training programs.",
+  { 
+    number: "04", 
+    title: "Baking Training & Products", 
+    description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income.", 
+    icon: Sparkles,
+    hasImage: true,
+    image: giftBoxesImage
   },
-  {
-    number: "05",
-    title: "Packaging Skills & Product Presentation",
-    description: "We teach small business owners how to package their products professionally so they can attract more customers and grow their businesses.",
+  { 
+    number: "05", 
+    title: "Packaging Skills & Presentation", 
+    description: "We teach small business owners how to package their products professionally so they can attract more customers.", 
+    icon: Heart,
+    hasImage: true,
+    image: pyramidBoxesImage
   },
 ];
 
+const galleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
+
 const Services = () => (
-  <div>
+  <div className="pt-24">
     {/* Hero */}
-    <section className="relative bg-background py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-advocacy-red hidden lg:block" />
-      <div className="absolute top-0 right-[33.33%] w-16 h-full bg-advocacy-red/60 hidden lg:block" />
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4"
-            style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Our Services
-          </p>
-          <h1 className="text-5xl md:text-7xl font-display leading-[0.95] tracking-tight">
-            Education,<br />
-            <span className="italic text-advocacy-red">Support</span> &<br />
-            Empowerment
+    <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl"
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4 font-sans">What We Do</p>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[0.95] tracking-tight">
+            Our <span className="italic text-advocacy-red">Services</span>
           </h1>
-          <div className="w-16 h-[3px] bg-advocacy-red mt-8" />
-        </div>
+          <p className="mt-6 text-muted-foreground text-lg max-w-xl leading-relaxed">
+            We combine health education, community support, and skill empowerment to help people living with sickle cell thrive.
+          </p>
+        </motion.div>
       </div>
     </section>
 
     {/* Services List */}
-    <section className="py-24 md:py-32">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 max-w-5xl">
         {services.map((s, i) => (
-          <div key={s.number} className={`grid md:grid-cols-12 gap-8 py-12 ${i < services.length - 1 ? 'border-b border-border' : ''} group hover:bg-advocacy-red/[0.02] transition-colors -mx-4 px-4`}>
-            <div className="md:col-span-2">
-              <span className="text-5xl font-display font-bold text-advocacy-red opacity-40 group-hover:opacity-70 transition-opacity">
-                {s.number}
-              </span>
+          <Section key={s.number} delay={i * 0.1}>
+            <div className={`grid md:grid-cols-12 gap-8 py-12 items-center ${i < services.length - 1 ? "border-b border-border" : ""} group`}>
+              {s.hasImage ? (
+                <div className="md:col-span-3">
+                  <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="md:col-span-3 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-advocacy-red/10 flex items-center justify-center">
+                    <s.icon className="w-10 h-10 text-advocacy-red" />
+                  </div>
+                </div>
+              )}
+              <div className="md:col-span-4">
+                <span className="text-5xl font-display font-bold text-advocacy-red/20">{s.number}</span>
+                <h3 className="text-2xl font-display mt-2">{s.title}</h3>
+              </div>
+              <div className="md:col-span-5">
+                <p className="text-muted-foreground leading-relaxed text-lg">{s.description}</p>
+              </div>
             </div>
-            <div className="md:col-span-4">
-              <h3 className="text-2xl font-display">{s.title}</h3>
-              <div className="w-8 h-[2px] bg-advocacy-red mt-3 group-hover:w-14 transition-all" />
-            </div>
-            <div className="md:col-span-6">
-              <p className="text-muted-foreground leading-relaxed">{s.description}</p>
-            </div>
-          </div>
+          </Section>
         ))}
       </div>
     </section>
 
-    {/* Featured Products */}
-    <section className="bg-card py-24 md:py-32">
+    {/* Gallery */}
+    <section className="py-16 bg-card">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4"
-            style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Coming Soon
-          </p>
-          <h2 className="text-4xl md:text-5xl font-display leading-tight">
-            Featured <span className="italic text-advocacy-red">Products</span>
+        <Section>
+          <h2 className="text-3xl md:text-4xl font-display text-center mb-12">
+            Our <span className="italic text-advocacy-red">Work</span> in Action
           </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {["Baked Goods", "Packaging Kits", "Training Materials"].map((item) => (
-            <div key={item} className="bg-background p-10 text-center group hover:shadow-lg transition-shadow border-t-2 border-advocacy-red">
-              <div className="w-20 h-20 bg-advocacy-red/5 mx-auto mb-6" />
-              <h3 className="font-display text-xl">{item}</h3>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2"
-                style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Coming Soon
-              </p>
-            </div>
+        </Section>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {galleryImages.map((img, i) => (
+            <Section key={i} delay={i * 0.1}>
+              <div className="aspect-square overflow-hidden bg-muted">
+                <img
+                  src={img}
+                  alt={`Gallery image ${i + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </Section>
           ))}
         </div>
       </div>
@@ -107,8 +157,7 @@ const Services = () => (
         <h2 className="text-3xl md:text-5xl font-display mb-6">
           Ready to <span className="italic">get involved</span>?
         </h2>
-        <Link to="/community" className="group inline-flex items-center gap-2 text-sm uppercase tracking-widest hover:opacity-80 transition-opacity border-b border-primary-foreground/30 pb-1"
-          style={{ fontFamily: "'Poppins', sans-serif" }}>
+        <Link to="/#community" className="group inline-flex items-center gap-2 text-sm uppercase tracking-widest hover:opacity-80 transition-opacity border-b border-primary-foreground/30 pb-1 font-sans">
           Join the Movement <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
