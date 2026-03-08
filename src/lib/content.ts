@@ -54,6 +54,8 @@ export interface SiteContent {
     togetherThriveImage: string;
     communityImage: string;
     servicesHeroImage: string;
+    teamImages: string[];
+    galleryImages: string[];
   };
 }
 
