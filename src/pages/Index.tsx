@@ -278,8 +278,8 @@ const Index = () => (
     <Section>
       <div className="relative h-[50vh] overflow-hidden">
         <img
-          src={student3Image}
-          alt="SECLUSA students showing their baked goods"
+          src={togetherThriveImage}
+          alt="Women united together"
           className="w-full h-full object-cover"
           loading="lazy"
         />
