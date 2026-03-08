@@ -9,6 +9,9 @@ import founderImage from "@/assets/founder.jpg";
 import cofounderImage from "@/assets/cofounder.jpg";
 import teamMuhammadImage from "@/assets/team-muhammad.jpg";
 import teamFavourImage from "@/assets/team-favour.jpg";
+import student1Image from "@/assets/student1.jpg";
+import student2Image from "@/assets/student2.jpg";
+import student3Image from "@/assets/student3.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
@@ -94,7 +97,7 @@ const Index = () => (
         className="absolute top-0 right-0 w-1/3 h-full hidden lg:block overflow-hidden"
       >
         <img
-          src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80"
+          src={student1Image}
           alt="Community support"
           className="w-full h-full object-cover mix-blend-multiply opacity-40"
         />
@@ -130,7 +133,7 @@ const Index = () => (
             <div className="relative">
               <div className="aspect-[4/5] bg-muted overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80"
+                  src={student2Image}
                   alt="SECLUSA founder"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -313,7 +316,7 @@ const Index = () => (
     <Section>
       <div className="relative h-[50vh] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
+          src={student3Image}
           alt="People working together"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -402,7 +405,7 @@ const Index = () => (
           <Section delay={0.3}>
             <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80"
+                src={foundersImage}
                 alt="Community members"
                 className="w-full h-full object-cover mix-blend-luminosity opacity-60"
                 loading="lazy"
