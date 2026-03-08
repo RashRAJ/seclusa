@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BubbleDiagram from "@/components/BubbleDiagram";
 
 const stats = [
   { value: "100+", label: "Lives Impacted", color: "text-advocacy-red" },
@@ -128,6 +129,9 @@ const Index = () => (
         </div>
       </div>
     </section>
+
+    {/* Interactive Bubble Diagram */}
+    <BubbleDiagram />
 
     {/* Story Section */}
     <section className="bg-card">
