@@ -18,60 +18,64 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="SECLUSA Logo" className="h-12 w-auto" />
+    <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md">
+      <div className="container mx-auto flex items-center justify-between h-20 px-4">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="SECLUSA Logo" className="h-14 w-auto" />
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`text-sm tracking-wide uppercase transition-colors ${
                 location.pathname === l.to
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {l.label}
             </Link>
           ))}
         </div>
 
-        <Link to="/community" className="hidden md:block">
-          <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-heading font-semibold">
-            Join the Movement
+        <Link to="/community" className="hidden lg:block">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-6 uppercase text-xs tracking-widest"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Join Us
           </Button>
         </Link>
 
         {/* Mobile toggle */}
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
+        <button className="lg:hidden p-2" onClick={() => setOpen(!open)}>
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-card border-b border-border px-4 pb-4 space-y-1">
+        <div className="lg:hidden bg-background border-t border-border px-4 pb-6 pt-4 space-y-1">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className={`block px-3 py-2 rounded-md text-sm font-medium ${
+              className={`block px-3 py-3 text-sm uppercase tracking-wide ${
                 location.pathname === l.to
-                  ? "bg-primary/10 text-primary"
+                  ? "text-primary font-semibold"
                   : "text-muted-foreground"
               }`}
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {l.label}
             </Link>
           ))}
           <Link to="/community" onClick={() => setOpen(false)}>
-            <Button className="w-full mt-2 bg-accent text-accent-foreground font-heading font-semibold">
+            <Button className="w-full mt-3 bg-primary text-primary-foreground rounded-none uppercase text-xs tracking-widest"
+              style={{ fontFamily: "'Poppins', sans-serif" }}>
               Join the Movement
             </Button>
           </Link>

@@ -1,38 +1,57 @@
-import { Quote } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-
 const testimonials = [
   {
     quote: "SECLUSA is creating a space where people affected by sickle cell can feel understood, supported, and empowered.",
+    highlight: ["understood", "supported", "empowered"],
   },
   {
     quote: "The combination of health awareness and skill empowerment makes SECLUSA a truly impactful initiative.",
+    highlight: ["health awareness", "skill empowerment", "impactful"],
   },
 ];
 
 const Testimonials = () => (
   <div>
-    <section className="bg-primary py-16 md:py-24 text-primary-foreground text-center">
-      <div className="container mx-auto px-4">
-        <h1 className="font-heading font-extrabold text-4xl md:text-5xl">Testimonials</h1>
-        <p className="mt-4 opacity-80 text-lg max-w-2xl mx-auto">
-          Hear from people who have experienced the impact of SECLUSA.
-        </p>
+    {/* Hero */}
+    <section className="relative bg-background py-24 md:py-32 overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-1/4 h-2/3 bg-healing-blue hidden lg:block" />
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="md:ml-[30%]">
+          <p className="text-xs uppercase tracking-[0.3em] text-healing-blue mb-4"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Testimonials
+          </p>
+          <h1 className="text-5xl md:text-7xl font-display leading-[0.95] tracking-tight">
+            Words That<br />
+            <span className="italic text-primary">Inspire</span> Us
+          </h1>
+        </div>
       </div>
     </section>
 
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="space-y-6">
-          {testimonials.map((t, i) => (
-            <Card key={i} className="border-none bg-card">
-              <CardContent className="p-8 md:p-10">
-                <Quote className="w-10 h-10 text-accent mb-4" />
-                <p className="text-foreground leading-relaxed italic text-xl">"{t.quote}"</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    {/* Quotes */}
+    <section className="py-24 md:py-32">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {testimonials.map((t, i) => (
+          <div key={i} className={`py-20 ${i < testimonials.length - 1 ? 'border-b border-border' : ''}`}>
+            <div className="flex items-start gap-6">
+              <span className="text-8xl font-display text-primary/20 leading-none hidden md:block">"</span>
+              <blockquote className="text-3xl md:text-4xl lg:text-5xl font-display italic leading-snug text-foreground">
+                {t.quote}
+              </blockquote>
+            </div>
+            <div className="mt-8 w-12 h-[2px] bg-advocacy-red md:ml-20" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section className="bg-primary py-20 text-primary-foreground text-center">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-5xl font-display mb-4">
+          Your story <span className="italic">matters</span> too
+        </h2>
+        <p className="opacity-60 text-lg">Join SECLUSA and share your voice with the community.</p>
       </div>
     </section>
   </div>

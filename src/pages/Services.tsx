@@ -1,89 +1,126 @@
-import { BookOpen, Users, Briefcase, ChefHat, Package } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
-    icon: BookOpen,
+    number: "01",
     title: "Sickle Cell Education & Awareness",
     description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.",
-    color: "text-advocacy-red",
-    bg: "bg-advocacy-red/10",
+    accent: "text-advocacy-red",
+    border: "border-advocacy-red",
   },
   {
-    icon: Users,
+    number: "02",
     title: "Community Support Network",
     description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.",
-    color: "text-healing-blue",
-    bg: "bg-healing-blue/10",
+    accent: "text-healing-blue",
+    border: "border-healing-blue",
   },
   {
-    icon: Briefcase,
+    number: "03",
     title: "Entrepreneurship & Skill Empowerment",
     description: "We provide practical skill training to help people become more financially independent. This includes baking training and packaging education for small businesses.",
-    color: "text-hope-gold",
-    bg: "bg-hope-gold/10",
+    accent: "text-hope-gold",
+    border: "border-hope-gold",
   },
   {
-    icon: ChefHat,
+    number: "04",
     title: "Baking Training & Products",
     description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income. We also showcase baked goods made through our training programs.",
-    color: "text-primary",
-    bg: "bg-primary/10",
+    accent: "text-primary",
+    border: "border-primary",
   },
   {
-    icon: Package,
+    number: "05",
     title: "Packaging Skills & Product Presentation",
     description: "We teach small business owners how to package their products professionally so they can attract more customers and grow their businesses.",
-    color: "text-healing-blue",
-    bg: "bg-healing-blue/10",
+    accent: "text-healing-blue",
+    border: "border-healing-blue",
   },
 ];
 
 const Services = () => (
   <div>
-    <section className="bg-primary py-16 md:py-24 text-primary-foreground text-center">
-      <div className="container mx-auto px-4">
-        <h1 className="font-heading font-extrabold text-4xl md:text-5xl">Our Services</h1>
-        <p className="mt-4 opacity-80 text-lg max-w-2xl mx-auto">
-          Education, support, and empowerment — everything we offer is designed to help people affected by sickle cell thrive.
-        </p>
-      </div>
-    </section>
-
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s) => (
-            <Card key={s.title} className="border-none bg-card hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className={`w-14 h-14 rounded-2xl ${s.bg} flex items-center justify-center mb-5`}>
-                  <s.icon className={`w-7 h-7 ${s.color}`} />
-                </div>
-                <h3 className="font-heading font-semibold text-xl mb-3">{s.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{s.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+    {/* Hero */}
+    <section className="relative bg-background py-24 md:py-32 overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-advocacy-red hidden lg:block" />
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Our Services
+          </p>
+          <h1 className="text-5xl md:text-7xl font-display leading-[0.95] tracking-tight">
+            Education,<br />
+            <span className="italic text-primary">Support</span> &<br />
+            Empowerment
+          </h1>
         </div>
       </div>
     </section>
 
-    {/* Products Showcase Placeholder */}
-    <section className="py-16 bg-primary/5">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="font-heading font-bold text-3xl mb-4">Featured Products</h2>
-        <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-          Browse baked goods, packaging items, and training kits from our empowerment programs. Coming soon!
-        </p>
-        <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+    {/* Services List — editorial numbered */}
+    <section className="py-24 md:py-32">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {services.map((s, i) => (
+          <div key={s.number} className={`grid md:grid-cols-12 gap-8 py-12 ${i < services.length - 1 ? 'border-b border-border' : ''}`}>
+            <div className="md:col-span-2">
+              <span className={`text-5xl font-display font-bold ${s.accent} opacity-40`}>
+                {s.number}
+              </span>
+            </div>
+            <div className="md:col-span-4">
+              <h3 className="text-2xl font-display">{s.title}</h3>
+            </div>
+            <div className="md:col-span-6">
+              <p className="text-muted-foreground leading-relaxed">{s.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Featured Products */}
+    <section className="bg-card py-24 md:py-32">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <p className="text-xs uppercase tracking-[0.3em] text-hope-gold mb-4"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Coming Soon
+          </p>
+          <h2 className="text-4xl md:text-5xl font-display leading-tight">
+            Featured <span className="italic text-primary">Products</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
+            Browse baked goods, packaging items, and training kits from our empowerment programs.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {["Baked Goods", "Packaging Kits", "Training Materials"].map((item) => (
-            <div key={item} className="bg-card rounded-2xl p-8 shadow-sm">
-              <div className="w-16 h-16 bg-muted rounded-xl mx-auto mb-4" />
-              <p className="font-heading font-semibold">{item}</p>
-              <p className="text-sm text-muted-foreground mt-1">Coming soon</p>
+            <div key={item} className="bg-background p-10 text-center group hover:shadow-lg transition-shadow">
+              <div className="w-20 h-20 bg-muted mx-auto mb-6" />
+              <h3 className="font-display text-xl">{item}</h3>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2"
+                style={{ fontFamily: "'Poppins', sans-serif" }}>
+                Coming Soon
+              </p>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section className="bg-primary py-20 text-primary-foreground">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl md:text-5xl font-display mb-6">
+          Ready to <span className="italic">get involved</span>?
+        </h2>
+        <Link to="/community" className="group inline-flex items-center gap-2 text-sm uppercase tracking-widest hover:opacity-80 transition-opacity border-b border-primary-foreground/30 pb-1"
+          style={{ fontFamily: "'Poppins', sans-serif" }}>
+          Join the Movement <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
     </section>
   </div>
