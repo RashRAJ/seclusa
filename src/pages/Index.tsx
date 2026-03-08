@@ -155,8 +155,7 @@ const Index = () => {
           className="absolute top-0 right-0 w-1/3 h-full hidden lg:block overflow-hidden"
         >
           <img
-            src={img.hero}
-            alt="Community support"
+            src={img.hero         alt="Community support"
             className="w-full h-full object-cover mix-blend-multiply opacity-40"
           />
         </motion.div>
@@ -186,8 +185,7 @@ const Index = () => {
               <div className="relative group">
                 <div className="aspect-[4/5] bg-muted overflow-hidden">
                   <img
-                    src={student2Image}
-                    alt="SECLUSA founder"
+                    src={studeimg.about                 alt="SECLUSA founder"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
