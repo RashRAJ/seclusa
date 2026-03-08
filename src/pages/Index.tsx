@@ -234,13 +234,14 @@ const Index = () => (
                 </p>
               </div>
             </div>
-            <div className="aspect-square bg-muted overflow-hidden">
+            <div className="aspect-square bg-muted overflow-hidden group">
               <img
                 src={foundersImage}
                 alt="SECLUSA Founder and Co-Founder"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
             </div>
           </div>
         </Section>
