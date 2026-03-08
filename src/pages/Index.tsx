@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail, Phone, MapPin, Boo
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import foundersImage from "@/assets/founders.webp";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
