@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail, Phone, MapPin, Boo
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import foundersImage from "@/assets/founders.webp";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
@@ -182,8 +183,8 @@ const Index = () => (
             </div>
             <div className="aspect-square bg-muted overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80"
-                alt="Community gathering"
+                src={foundersImage}
+                alt="SECLUSA Founder and Co-Founder"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
