@@ -289,7 +289,7 @@ const Index = () => {
       <Section>
         <div className="relative h-[50vh] overflow-hidden group">
           <img
-            src={togetherThriveImage}
+            src={img.togetherThrive}
             alt="Women united together"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
