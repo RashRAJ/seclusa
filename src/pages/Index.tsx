@@ -89,7 +89,7 @@ const AnimatedStat = ({ value, label, delay }: { value: string; label: string; d
   );
 };
 
-const teamImages = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
+const teamImagesDefaults = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
 
 const Index = () => {
   const [content, setContent] = useState<SiteContent | null>(null);
@@ -99,6 +99,16 @@ const Index = () => {
   }, []);
 
   if (!content) return null;
+
+  // Use custom images if set, otherwise use defaults
+  const img = {
+    hero: content.images.heroImage || student1Image,
+    about: content.images.aboutImage || student2Image,
+    founders: content.images.foundersImage || foundersImage,
+    togetherThrive: content.images.togetherThriveImage || togetherThriveImage,
+    community: content.images.communityImage || foundersImage,
+    teamImages: content.images.teamImages.map((t, i) => t || teamImagesDefaults[i] || founderImage),
+  };
 
   return (
     <div>
