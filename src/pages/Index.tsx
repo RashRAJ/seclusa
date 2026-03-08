@@ -155,7 +155,8 @@ const Index = () => {
           className="absolute top-0 right-0 w-1/3 h-full hidden lg:block overflow-hidden"
         >
           <img
-            src={img.hero         alt="Community support"
+            src={img.hero}
+            alt="Community support"
             className="w-full h-full object-cover mix-blend-multiply opacity-40"
           />
         </motion.div>
