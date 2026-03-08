@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,63 @@ const Section = ({ children, className = "", delay = 0 }: { children: React.Reac
       className={className}
     >
       {children}
+    </motion.div>
+  );
+};
+
+/* ── Counter animation hook ── */
+const useCounter = (end: number, duration: number = 2000, startCounting: boolean) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!startCounting) return;
+    
+    let startTime: number;
+    let animationFrame: number;
+    
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Easing function for smooth deceleration
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+    
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, startCounting]);
+  
+  return count;
+};
+
+/* ── Animated stat component ── */
+const AnimatedStat = ({ value, label, delay }: { value: string; label: string; delay: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  
+  // Extract number and suffix (e.g., "100+" -> 100, "+")
+  const numericValue = parseInt(value.replace(/\D/g, ''));
+  const suffix = value.replace(/\d/g, '');
+  
+  const animatedCount = useCounter(numericValue, 2000, inView);
+  
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay }}
+      className="text-center"
+    >
+      <p className="text-5xl md:text-6xl font-display font-bold">
+        {animatedCount}{suffix}
+      </p>
+      <p className="text-xs uppercase tracking-widest mt-2 opacity-60 font-sans">{label}</p>
     </motion.div>
   );
 };
@@ -107,12 +164,7 @@ const Index = () => (
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
           {stats.map((stat, i) => (
-            <Section key={stat.label} delay={i * 0.15}>
-              <div className="text-center">
-                <p className="text-5xl md:text-6xl font-display font-bold">{stat.value}</p>
-                <p className="text-xs uppercase tracking-widest mt-2 opacity-60 font-sans">{stat.label}</p>
-              </div>
-            </Section>
+            <AnimatedStat key={stat.label} value={stat.value} label={stat.label} delay={i * 0.15} />
           ))}
         </div>
       </div>
