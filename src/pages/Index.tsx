@@ -133,7 +133,7 @@ const Index = () => (
             <div className="relative">
               <div className="aspect-[4/5] bg-muted overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80"
+                  src={student2Image}
                   alt="SECLUSA founder"
                   className="w-full h-full object-cover"
                   loading="lazy"
