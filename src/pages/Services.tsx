@@ -26,7 +26,7 @@ const Section = ({ children, className = "", delay = 0 }: { children: React.Reac
 };
 
 const serviceIcons = [BookOpen, Users, Lightbulb, Sparkles, Heart];
-const galleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
+const defaultGalleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
 
 const Services = () => {
   const [content, setContent] = useState<SiteContent | null>(null);
