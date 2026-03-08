@@ -91,16 +91,17 @@ const Services = () => (
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden md:block"
+            className="relative hidden md:block group"
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={eventsImage}
                 alt="SECLUSA community event"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
             </div>
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-advocacy-red" />
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-advocacy-red transition-transform duration-300 group-hover:scale-110" />
           </motion.div>
         </div>
       </div>
