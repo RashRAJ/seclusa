@@ -5,11 +5,8 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { to: "#home", label: "Home" },
-  { to: "#about", label: "About" },
-  { to: "#services", label: "Services" },
-  { to: "#testimonials", label: "Testimonials" },
-  { to: "#community", label: "Community" },
-  { to: "#contact", label: "Contact" },
+  { to: "#team", label: "Team" },
+  { to: "#community", label: "Join Us" },
 ];
 
 const Navbar = () => {
