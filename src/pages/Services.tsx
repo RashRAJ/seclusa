@@ -116,7 +116,7 @@ const Services = () => {
             </h2>
           </Section>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {galageslery((img, i) => (
+            {gallery.map((img, i) => (
               <Section key={i} delay={i * 0.1}>
                 <div className="aspect-square overflow-hidden bg-muted">
                   <img
