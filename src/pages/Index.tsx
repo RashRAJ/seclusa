@@ -210,12 +210,12 @@ const Index = () => (
           </div>
         </Section>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <Section delay={0.1}>
             <div className="group">
               <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
                 <img
-                  src={foundersImage}
+                  src={founderImage}
                   alt="Hadiza Haruna - Founder"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -231,14 +231,14 @@ const Index = () => (
             <div className="group">
               <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
-                  alt="Team Member"
+                  src={cofounderImage}
+                  alt="Aisha Haruna Muhammad - Co-Founder"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-display">Co-Founder</h3>
+              <h3 className="text-xl font-display">Aisha Haruna Muhammad</h3>
               <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Co-Founder</p>
             </div>
           </Section>
@@ -247,15 +247,31 @@ const Index = () => (
             <div className="group">
               <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
                 <img
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80"
-                  alt="Team Member"
+                  src={teamMuhammadImage}
+                  alt="Muhammad Haruna Muhammad - Team Member"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-display">Team Member</h3>
-              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Program Lead</p>
+              <h3 className="text-xl font-display">Muhammad Haruna Muhammad</h3>
+              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Team Member</p>
+            </div>
+          </Section>
+
+          <Section delay={0.4}>
+            <div className="group">
+              <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
+                <img
+                  src={teamFavourImage}
+                  alt="Favour Abu David - Team Member"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
+              </div>
+              <h3 className="text-xl font-display">Favour Abu David</h3>
+              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Team Member</p>
             </div>
           </Section>
         </div>
