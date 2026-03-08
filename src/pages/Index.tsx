@@ -130,6 +130,9 @@ const Index = () => (
       </div>
     </section>
 
+    {/* Interactive Bubble Diagram */}
+    <BubbleDiagram />
+
     {/* Story Section */}
     <section className="bg-card">
       <div className="container mx-auto px-4 py-24 md:py-32">
