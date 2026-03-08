@@ -21,10 +21,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-heading font-bold text-lg">S</span>
-          </div>
-          <span className="font-heading font-bold text-lg text-primary hidden sm:inline">SECLUSA</span>
+          <img src={logo} alt="SECLUSA Logo" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop */}
