@@ -405,7 +405,7 @@ const Index = () => (
           <Section delay={0.3}>
             <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80"
+                src={foundersImage}
                 alt="Community members"
                 className="w-full h-full object-cover mix-blend-luminosity opacity-60"
                 loading="lazy"
