@@ -68,8 +68,7 @@ const Services = () => {
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={servicesHeroImg}
-                  alt="SECLUSA community event"
+                  src={servicesHeroImg                alt="SECLUSA community event"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
@@ -116,7 +115,7 @@ const Services = () => {
             </h2>
           </Section>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {galages.map((img, i) => (
+            {galageslery((img, i) => (
               <Section key={i} delay={i * 0.1}>
                 <div className="aspect-square overflow-hidden bg-muted">
                   <img
