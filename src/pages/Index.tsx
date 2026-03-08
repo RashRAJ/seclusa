@@ -12,6 +12,7 @@ import teamFavourImage from "@/assets/team-favour.jpg";
 import student1Image from "@/assets/student1.jpg";
 import student2Image from "@/assets/student2.jpg";
 import student3Image from "@/assets/student3.jpg";
+import togetherThriveImage from "@/assets/together-thrive.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
