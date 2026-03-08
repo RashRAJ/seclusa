@@ -419,13 +419,16 @@ const Index = () => (
             </div>
           </Section>
           <Section delay={0.3}>
-            <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden">
+            <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden group relative">
               <img
                 src={foundersImage}
                 alt="Community members"
-                className="w-full h-full object-cover mix-blend-luminosity opacity-60"
+                className="w-full h-full object-cover mix-blend-luminosity opacity-60 transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-foreground/0 group-hover:bg-primary-foreground/10 transition-colors duration-300" />
+            </div>
+          </Section>
             </div>
           </Section>
         </div>
