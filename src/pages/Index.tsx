@@ -1,9 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail, Phone, MapPin, BookOpen, Lightbulb } from "lucide-react";
+import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import foundersImage from "@/assets/founders.webp";
 import founderImage from "@/assets/founder.jpg";
 import cofounderImage from "@/assets/cofounder.jpg";
@@ -12,11 +10,6 @@ import teamFavourImage from "@/assets/team-favour.jpg";
 import student1Image from "@/assets/student1.jpg";
 import student2Image from "@/assets/student2.jpg";
 import student3Image from "@/assets/student3.jpg";
-import giftBoxesImage from "@/assets/gift-boxes.jpg";
-import chinchinImage from "@/assets/chinchin.jpg";
-import eventsImage from "@/assets/events.jpg";
-import pyramidBoxesImage from "@/assets/pyramid-boxes.jpg";
-import giftBagsImage from "@/assets/gift-bags.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
@@ -39,14 +32,6 @@ const stats = [
   { value: "100+", label: "Lives Impacted" },
   { value: "5", label: "Core Programs" },
   { value: "3", label: "Focus Areas" },
-];
-
-const services = [
-  { number: "01", title: "Sickle Cell Education & Awareness", description: "We share simple, reliable information about sickle cell to help people understand the condition better, reduce stigma, and support those affected.", icon: BookOpen, image: eventsImage },
-  { number: "02", title: "Community Support Network", description: "SECLUSA connects people living with sickle cell, caregivers, and supporters so they can share experiences, encouragement, and helpful resources.", icon: Users, image: giftBagsImage },
-  { number: "03", title: "Entrepreneurship & Skill Empowerment", description: "We provide practical skill training to help people become more financially independent, including baking training and packaging education.", icon: Lightbulb, image: chinchinImage },
-  { number: "04", title: "Baking Training & Products", description: "Through our baking program, we teach people how to bake simple products that they can sell to generate income.", icon: Sparkles, image: giftBoxesImage },
-  { number: "05", title: "Packaging Skills & Presentation", description: "We teach small business owners how to package their products professionally so they can attract more customers.", icon: Heart, image: pyramidBoxesImage },
 ];
 
 const testimonials = [
