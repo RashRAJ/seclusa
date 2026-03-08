@@ -164,12 +164,7 @@ const Index = () => (
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
           {stats.map((stat, i) => (
-            <Section key={stat.label} delay={i * 0.15}>
-              <div className="text-center">
-                <p className="text-5xl md:text-6xl font-display font-bold">{stat.value}</p>
-                <p className="text-xs uppercase tracking-widest mt-2 opacity-60 font-sans">{stat.label}</p>
-              </div>
-            </Section>
+            <AnimatedStat key={stat.label} value={stat.value} label={stat.label} delay={i * 0.15} />
           ))}
         </div>
       </div>
