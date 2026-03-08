@@ -194,6 +194,70 @@ const Index = () => (
       </div>
     </section>
 
+    {/* ═══════ TEAM ═══════ */}
+    <section id="team" className="py-24 md:py-32">
+      <div className="container mx-auto px-4">
+        <Section>
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4 font-sans">Meet Our Team</p>
+            <h2 className="text-4xl md:text-5xl font-display leading-tight">
+              The <span className="italic text-advocacy-red">People</span> Behind SECLUSA
+            </h2>
+          </div>
+        </Section>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <Section delay={0.1}>
+            <div className="group">
+              <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
+                <img
+                  src={foundersImage}
+                  alt="Hadiza Haruna - Founder"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
+              </div>
+              <h3 className="text-xl font-display">Hadiza Haruna</h3>
+              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Founder</p>
+            </div>
+          </Section>
+
+          <Section delay={0.2}>
+            <div className="group">
+              <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+                  alt="Team Member"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
+              </div>
+              <h3 className="text-xl font-display">Co-Founder</h3>
+              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Co-Founder</p>
+            </div>
+          </Section>
+
+          <Section delay={0.3}>
+            <div className="group">
+              <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
+                <img
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80"
+                  alt="Team Member"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
+              </div>
+              <h3 className="text-xl font-display">Team Member</h3>
+              <p className="text-advocacy-red text-sm uppercase tracking-wider font-sans">Program Lead</p>
+            </div>
+          </Section>
+        </div>
+      </div>
+    </section>
+
     {/* ═══════ SERVICES ═══════ */}
     <section id="services" className="py-24 md:py-32">
       <div className="container mx-auto px-4 max-w-5xl">
