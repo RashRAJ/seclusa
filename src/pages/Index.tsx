@@ -330,11 +330,11 @@ const Index = () => (
 
     {/* ═══════ IMAGE BREAK ═══════ */}
     <Section>
-      <div className="relative h-[50vh] overflow-hidden">
+      <div className="relative h-[50vh] overflow-hidden group">
         <img
           src={togetherThriveImage}
           alt="Women united together"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-advocacy-red/30" />
