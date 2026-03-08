@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail } from "lucide-react";
+import { ArrowDown, ArrowRight, Heart, Users, Sparkles, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import foundersImage from "@/assets/founders.webp";
 import founderImage from "@/assets/founder.jpg";
 import cofounderImage from "@/assets/cofounder.jpg";
