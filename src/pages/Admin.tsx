@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Image, Type, Plus, Trash2 } from "lucide-react";
+import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Plus, Trash2, Home, MessageSquare, Phone, Briefcase, UserCircle } from "lucide-react";
 import { getContent, saveContent, resetContent, SiteContent, defaultContent } from "@/lib/content";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const ADMIN_EMAIL = "seclusa.org@gmail.com";
 const ADMIN_PASSWORD = "SECLUSA";
