@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import foundersImage from "@/assets/founders.webp";
+import founderImage from "@/assets/founder.jpg";
+import cofounderImage from "@/assets/cofounder.jpg";
+import teamMuhammadImage from "@/assets/team-muhammad.jpg";
+import teamFavourImage from "@/assets/team-favour.jpg";
 
 /* ── animation helper ── */
 const Section = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
