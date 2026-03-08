@@ -175,16 +175,17 @@ const Index = () => (
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <Section>
-            <div className="relative">
+            <div className="relative group">
               <div className="aspect-[4/5] bg-muted overflow-hidden">
                 <img
                   src={student2Image}
                   alt="SECLUSA founder"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-advocacy-red" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-advocacy-red transition-transform duration-300 group-hover:scale-110" />
             </div>
           </Section>
           <Section delay={0.2}>
