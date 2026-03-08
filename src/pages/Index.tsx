@@ -429,8 +429,6 @@ const Index = () => (
               <div className="absolute inset-0 bg-primary-foreground/0 group-hover:bg-primary-foreground/10 transition-colors duration-300" />
             </div>
           </Section>
-            </div>
-          </Section>
         </div>
       </div>
     </section>
