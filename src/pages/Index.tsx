@@ -183,8 +183,8 @@ const Index = () => (
             </div>
             <div className="aspect-square bg-muted overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80"
-                alt="Community gathering"
+                src={foundersImage}
+                alt="SECLUSA Founder and Co-Founder"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
