@@ -251,6 +251,15 @@ const Index = () => (
     {/* ═══════ TEAM ═══════ */}
     <section id="team" className="py-24 md:py-32">
       <div className="container mx-auto px-4">
+        <Section>
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4 font-sans">Meet Our Team</p>
+            <h2 className="text-4xl md:text-5xl font-display leading-tight">
+              The <span className="italic text-advocacy-red">People</span> Behind SECLUSA
+            </h2>
+          </div>
+        </Section>
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <Section delay={0.1}>
             <div className="group">
