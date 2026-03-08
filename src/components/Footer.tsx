@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => (
   <footer className="bg-foreground text-background">
-    <div className="absolute w-full h-[4px] bg-advocacy-red" />
+    <div className="w-full h-[4px] bg-advocacy-red" />
     <div className="container mx-auto px-4 py-16">
-      <div className="grid md:grid-cols-4 gap-10">
-        {/* Brand */}
-        <div className="md:col-span-2">
+      <div className="grid md:grid-cols-3 gap-10">
+        <div>
           <img src={logo} alt="SECLUSA" className="h-16 w-auto mb-4 brightness-0 invert" />
           <p className="text-sm opacity-60 leading-relaxed max-w-sm">
             Empowering lives affected by sickle cell through care, community, and opportunity.
@@ -25,44 +23,23 @@ const Footer = () => (
           </div>
         </div>
 
-        {/* Quick Links */}
         <div>
-          <h4 className="text-xs uppercase tracking-widest text-advocacy-red mb-5" style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Navigation
-          </h4>
+          <h4 className="text-xs uppercase tracking-widest text-advocacy-red mb-5 font-sans">Navigation</h4>
           <div className="space-y-3 text-sm">
-            {[
-              { path: "/about", label: "About" },
-              { path: "/services", label: "Services" },
-              { path: "/community", label: "Community" },
-              { path: "/testimonials", label: "Testimonials" },
-              { path: "/contact", label: "Contact" },
-            ].map((item) => (
-              <Link key={item.path} to={item.path} className="block opacity-60 hover:opacity-100 hover:text-advocacy-red transition-all">
-                {item.label}
-              </Link>
+            {["home", "about", "services", "testimonials", "community", "contact"].map((s) => (
+              <a key={s} href={`#${s}`} className="block opacity-60 hover:opacity-100 hover:text-advocacy-red transition-all capitalize">
+                {s}
+              </a>
             ))}
           </div>
         </div>
 
-        {/* Contact */}
         <div>
-          <h4 className="text-xs uppercase tracking-widest text-advocacy-red mb-5" style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Contact
-          </h4>
+          <h4 className="text-xs uppercase tracking-widest text-advocacy-red mb-5 font-sans">Contact</h4>
           <div className="space-y-3 text-sm">
-            <div className="flex items-center gap-3 opacity-60">
-              <Mail className="w-4 h-4 shrink-0" />
-              <a href="mailto:seclusa.org@gmail.com">seclusa.org@gmail.com</a>
-            </div>
-            <div className="flex items-center gap-3 opacity-60">
-              <Phone className="w-4 h-4 shrink-0" />
-              <span>09068963469</span>
-            </div>
-            <div className="flex items-center gap-3 opacity-60">
-              <MapPin className="w-4 h-4 shrink-0" />
-              <span>Hotoro, Kano, Nigeria</span>
-            </div>
+            <div className="flex items-center gap-3 opacity-60"><Mail className="w-4 h-4 shrink-0" /><a href="mailto:seclusa.org@gmail.com">seclusa.org@gmail.com</a></div>
+            <div className="flex items-center gap-3 opacity-60"><Phone className="w-4 h-4 shrink-0" /><span>09068963469</span></div>
+            <div className="flex items-center gap-3 opacity-60"><MapPin className="w-4 h-4 shrink-0" /><span>Hotoro, Kano, Nigeria</span></div>
           </div>
         </div>
       </div>
