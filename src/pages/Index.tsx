@@ -269,7 +269,7 @@ const Index = () => {
                 <div className="group">
                   <div className="aspect-[3/4] bg-muted overflow-hidden mb-6 relative">
                     <img
-                      src={teamImages[i] || founderImage}
+                      src={img.teamImages[i]}
                       alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
