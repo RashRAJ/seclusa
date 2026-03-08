@@ -37,6 +37,9 @@ const Services = () => {
 
   if (!content) return null;
 
+  const servicesHeroImg = content.images.servicesHeroImage || eventsImage;
+  const gallery = defaultGalleryImages.map((def, i) => content.images.galleryImages[i] || def);
+
   return (
     <div className="pt-24">
       {/* Hero */}
