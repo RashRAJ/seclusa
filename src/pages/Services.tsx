@@ -70,22 +70,39 @@ const galleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage
 const Services = () => (
   <div className="pt-24">
     {/* Hero */}
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl"
-        >
-          <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4 font-sans">What We Do</p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[0.95] tracking-tight">
-            Our <span className="italic text-advocacy-red">Services</span>
-          </h1>
-          <p className="mt-6 text-muted-foreground text-lg max-w-xl leading-relaxed">
-            We combine health education, community support, and skill empowerment to help people living with sickle cell thrive.
-          </p>
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-advocacy-red mb-4 font-sans">What We Do</p>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[0.95] tracking-tight">
+              Our <span className="italic text-advocacy-red">Services</span>
+            </h1>
+            <p className="mt-6 text-muted-foreground text-lg max-w-xl leading-relaxed">
+              We combine health education, community support, and skill empowerment to help people living with sickle cell thrive.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative hidden md:block"
+          >
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
+                src={eventsImage}
+                alt="SECLUSA community event"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-advocacy-red" />
+          </motion.div>
+        </div>
       </div>
     </section>
 
