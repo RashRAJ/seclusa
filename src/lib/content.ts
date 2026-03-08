@@ -131,6 +131,8 @@ const defaultContent: SiteContent = {
     togetherThriveImage: "",
     communityImage: "",
     servicesHeroImage: "",
+    teamImages: ["", "", "", ""],
+    galleryImages: ["", "", "", "", ""],
   },
 };
 
