@@ -377,7 +377,7 @@ const Index = () => {
             <Section delay={0.3}>
               <div className="aspect-[4/5] bg-primary-foreground/10 overflow-hidden group relative">
                 <img
-                  src={foundersImage}
+                  src={img.community}
                   alt="Community members"
                   className="w-full h-full object-cover mix-blend-luminosity opacity-60 transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
