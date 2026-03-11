@@ -139,8 +139,8 @@ const defaultContent: SiteContent = {
 
 export async function getContent(): Promise<SiteContent> {
   try {
-    const { data, error } = await supabase
-      .from("site_content")
+    const { data, error } = await (supabase
+      .from("site_content") as any)
       .select("content")
       .eq("content_key", "main")
       .maybeSingle();
