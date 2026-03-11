@@ -181,11 +181,11 @@ export async function saveContent(content: SiteContent): Promise<void> {
 
 export async function resetContent(): Promise<void> {
   try {
-    const { error } = await supabase
-      .from("site_content")
+    const { error } = await (supabase
+      .from("site_content") as any)
       .upsert({
         content_key: "main",
-        content: defaultContent as unknown as Record<string, unknown>,
+        content: defaultContent,
         updated_at: new Date().toISOString(),
       }, { onConflict: "content_key" });
 
