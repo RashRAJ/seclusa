@@ -1,4 +1,5 @@
-// Content Management System using localStorage
+// Content Management System using Lovable Cloud (Supabase)
+import { supabase } from "@/integrations/supabase/client";
 
 export interface SiteContent {
   hero: {
@@ -136,15 +137,21 @@ const defaultContent: SiteContent = {
   },
 };
 
-const STORAGE_KEY = "seclusa_content";
-
-export function getContent(): SiteContent {
+export async function getContent(): Promise<SiteContent> {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      // Merge with defaults to ensure all fields exist
-      return { ...defaultContent, ...parsed };
+    const { data, error } = await (supabase
+      .from("site_content") as any)
+      .select("content")
+      .eq("content_key", "main")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Error loading content:", error);
+      return defaultContent;
+    }
+
+    if (data?.content) {
+      return { ...defaultContent, ...(data.content as unknown as Partial<SiteContent>) };
     }
   } catch (e) {
     console.error("Error loading content:", e);
@@ -152,16 +159,63 @@ export function getContent(): SiteContent {
   return defaultContent;
 }
 
-export function saveContent(content: SiteContent): void {
+export async function saveContent(content: SiteContent): Promise<void> {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+    const { error } = await (supabase
+      .from("site_content") as any)
+      .upsert({
+        content_key: "main",
+        content: content,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "content_key" });
+
+    if (error) {
+      console.error("Error saving content:", error);
+      throw error;
+    }
   } catch (e) {
     console.error("Error saving content:", e);
+    throw e;
   }
 }
 
-export function resetContent(): void {
-  localStorage.removeItem(STORAGE_KEY);
+export async function resetContent(): Promise<void> {
+  try {
+    const { error } = await (supabase
+      .from("site_content") as any)
+      .upsert({
+        content_key: "main",
+        content: defaultContent,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "content_key" });
+
+    if (error) throw error;
+  } catch (e) {
+    console.error("Error resetting content:", e);
+    throw e;
+  }
+}
+
+export async function uploadImage(file: File, path: string): Promise<string> {
+  const { error } = await supabase.storage
+    .from("site-images")
+    .upload(path, file, { upsert: true });
+
+  if (error) throw error;
+
+  const { data } = supabase.storage
+    .from("site-images")
+    .getPublicUrl(path);
+
+  return data.publicUrl;
+}
+
+export async function deleteImage(path: string): Promise<void> {
+  const { error } = await supabase.storage
+    .from("site-images")
+    .remove([path]);
+
+  if (error) throw error;
 }
 
 export { defaultContent };
