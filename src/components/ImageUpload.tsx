@@ -1,74 +1,51 @@
 import { useRef, useState } from "react";
-import { Upload, X, Image as ImageIcon } from "lucide-react";
+import { Upload, X, Image as ImageIcon, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { uploadImage } from "@/lib/content";
 
 interface ImageUploadProps {
   value: string;
-  onChange: (base64: string) => void;
+  onChange: (url: string) => void;
   label: string;
   defaultImage?: string;
+  storagePath: string;
 }
 
-const ImageUpload = ({ value, onChange, label, defaultImage }: ImageUploadProps) => {
+const ImageUpload = ({ value, onChange, label, defaultImage, storagePath }: ImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file type
     if (!file.type.startsWith("image/")) {
       alert("Please select an image file");
       return;
     }
 
-    // Validate file size (max 2MB for localStorage limits)
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Image must be less than 2MB");
+    if (file.size > 10 * 1024 * 1024) {
+      alert("Image must be less than 10MB");
       return;
     }
 
     setIsLoading(true);
-
-    // Compress and convert to base64
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const maxSize = 800;
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height && width > maxSize) {
-          height = (height * maxSize) / width;
-          width = maxSize;
-        } else if (height > maxSize) {
-          width = (width * maxSize) / height;
-          height = maxSize;
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        const ctx = canvas.getContext("2d");
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        const compressed = canvas.toDataURL("image/jpeg", 0.8);
-        onChange(compressed);
-        setIsLoading(false);
-      };
-      img.src = event.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+    try {
+      const url = await uploadImage(file, storagePath);
+      // Add cache-busting param
+      onChange(url + "?t=" + Date.now());
+    } catch (err) {
+      console.error("Upload failed:", err);
+      alert("Failed to upload image. Please try again.");
+    } finally {
+      setIsLoading(false);
+      if (inputRef.current) inputRef.current.value = "";
+    }
   };
 
   const handleRemove = () => {
     onChange("");
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
+    if (inputRef.current) inputRef.current.value = "";
   };
 
   const displayImage = value || defaultImage;
@@ -126,8 +103,11 @@ const ImageUpload = ({ value, onChange, label, defaultImage }: ImageUploadProps)
             onClick={() => inputRef.current?.click()}
             disabled={isLoading}
           >
-            <Upload className="w-4 h-4 mr-2" />
-            {isLoading ? "Uploading..." : value ? "Replace Image" : "Upload Image"}
+            {isLoading ? (
+              <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Uploading...</>
+            ) : (
+              <><Upload className="w-4 h-4 mr-2" /> {value ? "Replace Image" : "Upload Image"}</>
+            )}
           </Button>
           {value && (
             <Button
