@@ -161,11 +161,11 @@ export async function getContent(): Promise<SiteContent> {
 
 export async function saveContent(content: SiteContent): Promise<void> {
   try {
-    const { error } = await supabase
-      .from("site_content")
+    const { error } = await (supabase
+      .from("site_content") as any)
       .upsert({
         content_key: "main",
-        content: content as unknown as Record<string, unknown>,
+        content: content,
         updated_at: new Date().toISOString(),
       }, { onConflict: "content_key" });
 
