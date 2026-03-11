@@ -95,7 +95,7 @@ const Index = () => {
   const [content, setContent] = useState<SiteContent | null>(null);
 
   useEffect(() => {
-    setContent(getContent());
+    getContent().then(setContent);
   }, []);
 
   if (!content) return null;

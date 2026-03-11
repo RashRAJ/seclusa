@@ -4,12 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Plus, Trash2, Home, MessageSquare, Phone, Briefcase, UserCircle, Sparkles, Image as ImageIcon } from "lucide-react";
+import { Lock, BarChart3, FileText, Users, Eye, LogOut, Save, RotateCcw, Plus, Trash2, Home, MessageSquare, Phone, Briefcase, UserCircle, Sparkles, Image as ImageIcon, Loader2 } from "lucide-react";
 import { getContent, saveContent, resetContent, SiteContent, defaultContent } from "@/lib/content";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 import ImageUpload from "@/components/ImageUpload";
+import { supabase } from "@/integrations/supabase/client";
 
 import student1Image from "@/assets/student1.jpg";
 import student2Image from "@/assets/student2.jpg";
@@ -37,63 +38,96 @@ const defaultImages = {
 const defaultTeamImages = [founderImage, cofounderImage, teamMuhammadImage, teamFavourImage];
 const defaultGalleryImages = [eventsImage, giftBagsImage, chinchinImage, giftBoxesImage, pyramidBoxesImage];
 
-const ADMIN_EMAIL = "seclusa.org@gmail.com";
-const ADMIN_PASSWORD = "SECLUSA";
-
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [content, setContent] = useState<SiteContent>(defaultContent);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  // Check existing session
   useEffect(() => {
-    const auth = sessionStorage.getItem("admin_auth");
-    if (auth === "true") {
-      setIsAuthenticated(true);
-    }
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsAuthenticated(!!session);
+      setIsCheckingAuth(false);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAuthenticated(!!session);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
+  // Load content when authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      setContent(getContent());
+      setIsLoading(true);
+      getContent().then((c) => {
+        setContent(c);
+        setIsLoading(false);
+      });
     }
   }, [isAuthenticated]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem("admin_auth", "true");
-    } else {
-      setError("Invalid email or password");
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (authError) {
+      setError(authError.message);
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setIsAuthenticated(false);
-    sessionStorage.removeItem("admin_auth");
   };
 
-  const handleSave = () => {
-    saveContent(content);
-    toast({
-      title: "Content saved!",
-      description: "Your changes have been saved. Refresh the site to see updates.",
-    });
-  };
-
-  const handleReset = () => {
-    if (confirm("Are you sure you want to reset all content to defaults?")) {
-      resetContent();
-      setContent(defaultContent);
+  const handleSave = async () => {
+    setIsSaving(true);
+    try {
+      await saveContent(content);
       toast({
-        title: "Content reset",
-        description: "All content has been reset to defaults.",
+        title: "Content saved!",
+        description: "Your changes have been saved to the cloud.",
       });
+    } catch (err) {
+      toast({
+        title: "Error saving",
+        description: "Failed to save content. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleReset = async () => {
+    if (confirm("Are you sure you want to reset all content to defaults?")) {
+      try {
+        await resetContent();
+        setContent(defaultContent);
+        toast({
+          title: "Content reset",
+          description: "All content has been reset to defaults.",
+        });
+      } catch {
+        toast({
+          title: "Error",
+          description: "Failed to reset content.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
@@ -159,6 +193,14 @@ const Admin = () => {
     }));
   };
 
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-advocacy-red" />
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-advocacy-red/5 flex items-center justify-center px-4">
@@ -223,6 +265,14 @@ const Admin = () => {
     );
   }
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-advocacy-red" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
@@ -241,9 +291,9 @@ const Admin = () => {
               <RotateCcw className="w-4 h-4 sm:mr-2" />
               <span className="hidden sm:inline">Reset</span>
             </Button>
-            <Button size="sm" className="bg-advocacy-red hover:bg-advocacy-red/90 rounded-none" onClick={handleSave}>
-              <Save className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:inline">Save Changes</span>
+            <Button size="sm" className="bg-advocacy-red hover:bg-advocacy-red/90 rounded-none" onClick={handleSave} disabled={isSaving}>
+              {isSaving ? <Loader2 className="w-4 h-4 sm:mr-2 animate-spin" /> : <Save className="w-4 h-4 sm:mr-2" />}
+              <span className="hidden sm:inline">{isSaving ? "Saving..." : "Save Changes"}</span>
             </Button>
             <Button variant="ghost" size="sm" onClick={handleLogout} className="text-muted-foreground hover:text-foreground">
               <LogOut className="w-4 h-4" />
@@ -842,7 +892,7 @@ const Admin = () => {
                     </div>
                     <div>
                       <CardTitle className="font-display">Homepage Images</CardTitle>
-                      <CardDescription>Upload custom images for the homepage sections. Max 2MB per image.</CardDescription>
+                      <CardDescription>Upload custom images. Images are stored in the cloud — no size limits.</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
@@ -852,6 +902,7 @@ const Admin = () => {
                       label="Hero Background"
                       value={content.images.heroImage}
                       defaultImage={defaultImages.heroImage}
+                      storagePath="homepage/hero"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, heroImage: v } }))
                       }
@@ -860,6 +911,7 @@ const Admin = () => {
                       label="About Section"
                       value={content.images.aboutImage}
                       defaultImage={defaultImages.aboutImage}
+                      storagePath="homepage/about"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, aboutImage: v } }))
                       }
@@ -868,6 +920,7 @@ const Admin = () => {
                       label="Founders / Why We Started"
                       value={content.images.foundersImage}
                       defaultImage={defaultImages.foundersImage}
+                      storagePath="homepage/founders"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, foundersImage: v } }))
                       }
@@ -876,6 +929,7 @@ const Admin = () => {
                       label="Together We Thrive Banner"
                       value={content.images.togetherThriveImage}
                       defaultImage={defaultImages.togetherThriveImage}
+                      storagePath="homepage/together-thrive"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, togetherThriveImage: v } }))
                       }
@@ -884,6 +938,7 @@ const Admin = () => {
                       label="Community Section"
                       value={content.images.communityImage}
                       defaultImage={defaultImages.communityImage}
+                      storagePath="homepage/community"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, communityImage: v } }))
                       }
@@ -892,6 +947,7 @@ const Admin = () => {
                       label="Services Page Hero"
                       value={content.images.servicesHeroImage}
                       defaultImage={defaultImages.servicesHeroImage}
+                      storagePath="homepage/services-hero"
                       onChange={(v) =>
                         setContent((p) => ({ ...p, images: { ...p.images, servicesHeroImage: v } }))
                       }
@@ -915,6 +971,7 @@ const Admin = () => {
                         label={member.name || `Team Member ${i + 1}`}
                         value={content.images.teamImages[i] || ""}
                         defaultImage={defaultTeamImages[i]}
+                        storagePath={`team/member-${i}`}
                         onChange={(v) =>
                           setContent((p) => {
                             const newTeamImages = [...p.images.teamImages];
@@ -943,6 +1000,7 @@ const Admin = () => {
                         label={`Gallery ${i + 1}`}
                         value={content.images.galleryImages[i] || ""}
                         defaultImage={defaultImg}
+                        storagePath={`gallery/image-${i}`}
                         onChange={(v) =>
                           setContent((p) => {
                             const newGalleryImages = [...p.images.galleryImages];
