@@ -48,7 +48,7 @@ const Navbar = () => {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-sm tracking-wide uppercase transition-colors text-muted-foreground hover:text-advocacy-red font-sans"
+                className="text-sm tracking-wide uppercase transition-colors text-muted-foreground hover:text-empowerment-purple font-sans"
               >
                 {l.label}
               </Link>

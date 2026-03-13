@@ -112,7 +112,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <Section>
             <h2 className="text-3xl md:text-4xl font-display text-center mb-12">
-              Our <span className="italic text-advocacy-red">Work</span> in Action
+              Our <span className="italic text-empowerment-purple">Work</span> in Action
             </h2>
           </Section>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
