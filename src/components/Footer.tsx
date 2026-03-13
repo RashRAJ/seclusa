@@ -35,7 +35,7 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-widest text-advocacy-red mb-5 font-sans">Contact</h4>
+          <h4 className="text-xs uppercase tracking-widest text-empowerment-purple mb-5 font-sans">Contact</h4>
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-3 opacity-60"><Mail className="w-4 h-4 shrink-0" /><a href="mailto:seclusa.org@gmail.com">seclusa.org@gmail.com</a></div>
             <div className="flex items-center gap-3 opacity-60"><Phone className="w-4 h-4 shrink-0" /><span>09068963469</span></div>

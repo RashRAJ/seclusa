@@ -217,7 +217,7 @@ const Index = () => {
 
       {/* ═══════ WHY WE STARTED ═══════ */}
       <section className="bg-card py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-2 h-full bg-advocacy-red hidden md:block" />
+        <div className="absolute top-0 left-0 w-2 h-full bg-empowerment-purple hidden md:block" />
         <div className="container mx-auto px-4 max-w-4xl">
           <Section>
             <div className="text-center mb-16">
