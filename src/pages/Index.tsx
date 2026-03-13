@@ -323,7 +323,7 @@ const Index = () => {
             <Section key={i} delay={i * 0.2}>
               <div className={`py-16 ${i < content.testimonials.length - 1 ? "border-b border-border" : ""}`}>
                 <div className="flex items-start gap-6">
-                  <span className="text-8xl font-display text-advocacy-red/30 leading-none hidden md:block">"</span>
+                  <span className="text-8xl font-display text-empowerment-purple/30 leading-none hidden md:block">"</span>
                   <blockquote className="text-3xl md:text-4xl lg:text-5xl font-display italic leading-snug text-foreground">
                     {t.quote}
                   </blockquote>
