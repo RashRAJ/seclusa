@@ -89,7 +89,7 @@ const Services = () => {
               <Section key={s.number} delay={i * 0.1}>
                 <div className={`grid md:grid-cols-12 gap-8 py-12 items-center ${i < content.services.items.length - 1 ? "border-b border-border" : ""} group`}>
                   <div className="md:col-span-2">
-                    <span className="text-5xl font-display font-bold text-advocacy-red/20">{s.number}</span>
+                    <span className="text-5xl font-display font-bold text-empowerment-purple/20">{s.number}</span>
                   </div>
                   <div className="md:col-span-4">
                     <div className="flex items-center gap-3 mb-2">
