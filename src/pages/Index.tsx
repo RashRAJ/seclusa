@@ -193,7 +193,7 @@ const Index = () => {
                   />
                   <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-advocacy-red transition-transform duration-300 group-hover:scale-110" />
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-empowerment-purple transition-transform duration-300 group-hover:scale-110" />
               </div>
             </Section>
             <Section delay={0.2}>
