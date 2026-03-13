@@ -74,7 +74,7 @@ const Services = () => {
                 />
                 <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
               </div>
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-advocacy-red transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-empowerment-purple transition-transform duration-300 group-hover:scale-110" />
             </motion.div>
           </div>
         </div>
@@ -89,7 +89,7 @@ const Services = () => {
               <Section key={s.number} delay={i * 0.1}>
                 <div className={`grid md:grid-cols-12 gap-8 py-12 items-center ${i < content.services.items.length - 1 ? "border-b border-border" : ""} group`}>
                   <div className="md:col-span-2">
-                    <span className="text-5xl font-display font-bold text-advocacy-red/20">{s.number}</span>
+                    <span className="text-5xl font-display font-bold text-empowerment-purple/20">{s.number}</span>
                   </div>
                   <div className="md:col-span-4">
                     <div className="flex items-center gap-3 mb-2">
@@ -112,7 +112,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <Section>
             <h2 className="text-3xl md:text-4xl font-display text-center mb-12">
-              Our <span className="italic text-advocacy-red">Work</span> in Action
+              Our <span className="italic text-empowerment-purple">Work</span> in Action
             </h2>
           </Section>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
