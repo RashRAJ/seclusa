@@ -193,7 +193,7 @@ const Index = () => {
                   />
                   <div className="absolute inset-0 bg-advocacy-red/0 group-hover:bg-advocacy-red/20 transition-colors duration-300" />
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-advocacy-red transition-transform duration-300 group-hover:scale-110" />
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-empowerment-purple transition-transform duration-300 group-hover:scale-110" />
               </div>
             </Section>
             <Section delay={0.2}>
@@ -217,7 +217,7 @@ const Index = () => {
 
       {/* ═══════ WHY WE STARTED ═══════ */}
       <section className="bg-card py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-2 h-full bg-advocacy-red hidden md:block" />
+        <div className="absolute top-0 left-0 w-2 h-full bg-empowerment-purple hidden md:block" />
         <div className="container mx-auto px-4 max-w-4xl">
           <Section>
             <div className="text-center mb-16">
@@ -323,7 +323,7 @@ const Index = () => {
             <Section key={i} delay={i * 0.2}>
               <div className={`py-16 ${i < content.testimonials.length - 1 ? "border-b border-border" : ""}`}>
                 <div className="flex items-start gap-6">
-                  <span className="text-8xl font-display text-advocacy-red/30 leading-none hidden md:block">"</span>
+                  <span className="text-8xl font-display text-empowerment-purple/30 leading-none hidden md:block">"</span>
                   <blockquote className="text-3xl md:text-4xl lg:text-5xl font-display italic leading-snug text-foreground">
                     {t.quote}
                   </blockquote>
