@@ -40,7 +40,7 @@ const Navbar = () => {
                 key={l.to}
                 href={l.to}
                 onClick={(e) => { e.preventDefault(); handleAnchorClick(l.to); }}
-                className="text-sm tracking-wide uppercase transition-colors text-muted-foreground hover:text-advocacy-red font-sans"
+                className="text-sm tracking-wide uppercase transition-colors text-muted-foreground hover:text-empowerment-purple font-sans"
               >
                 {l.label}
               </a>
