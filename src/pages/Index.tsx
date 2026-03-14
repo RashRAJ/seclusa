@@ -98,6 +98,14 @@ const Index = () => {
     getContent().then(setContent);
   }, []);
 
+  // Scroll to hash after content loads (handles cross-page navigation like /#community)
+  useEffect(() => {
+    if (content && window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [content]);
+
   if (!content) return null;
 
   // Use custom images if set, otherwise use defaults
