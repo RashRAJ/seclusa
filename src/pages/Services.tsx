@@ -93,7 +93,7 @@ const Services = () => {
                   </div>
                   <div className="md:col-span-4">
                     <div className="flex items-center gap-3 mb-2">
-                      <Icon className="w-6 h-6 text-advocacy-red" />
+                      <Icon className="w-6 h-6 text-empowerment-purple" />
                       <h3 className="text-2xl font-display">{s.title}</h3>
                     </div>
                   </div>
@@ -133,7 +133,8 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-advocacy-red py-20 text-primary-foreground">
+      <section className="bg-advocacy-red py-20 text-primary-foreground relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-empowerment-purple/15 blur-3xl pointer-events-none" />
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-display mb-6">
             Ready to <span className="italic">get involved</span>?

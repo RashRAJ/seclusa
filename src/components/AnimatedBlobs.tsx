@@ -50,7 +50,7 @@ const AnimatedBlobs = () => {
       
       {/* Center-right blob */}
       <motion.div
-        className="absolute top-1/2 -right-32 w-64 h-64 rounded-full bg-hope-gold/10 blur-3xl"
+        className="absolute top-1/2 -right-32 w-64 h-64 rounded-full bg-empowerment-purple/10 blur-3xl"
         animate={{
           x: [0, -20, 40, 0],
           y: [0, 50, -30, 0],
@@ -65,7 +65,7 @@ const AnimatedBlobs = () => {
       
       {/* Bottom-left blob */}
       <motion.div
-        className="absolute bottom-1/4 -left-24 w-56 h-56 rounded-full bg-empowerment-purple/8 blur-3xl"
+        className="absolute bottom-1/4 -left-24 w-56 h-56 rounded-full bg-empowerment-purple/15 blur-3xl"
         animate={{
           x: [0, 40, -20, 0],
           y: [0, -20, 30, 0],
@@ -78,9 +78,9 @@ const AnimatedBlobs = () => {
         }}
       />
       
-      {/* Bottom-right blob */}
+      {/* Bottom-right purple blob */}
       <motion.div
-        className="absolute -bottom-20 right-1/4 w-80 h-80 rounded-full bg-primary/8 blur-3xl"
+        className="absolute -bottom-20 right-1/4 w-80 h-80 rounded-full bg-empowerment-purple/8 blur-3xl"
         animate={{
           x: [0, -30, 20, 0],
           y: [0, 40, -40, 0],

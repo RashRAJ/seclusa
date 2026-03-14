@@ -47,6 +47,9 @@ const Admin = () => {
   const [content, setContent] = useState<SiteContent>(defaultContent);
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [inviteEmail, setInviteEmail] = useState("");
+  const [invitePassword, setInvitePassword] = useState("");
+  const [isCreatingAdmin, setIsCreatingAdmin] = useState(false);
   const { toast } = useToast();
 
   // Check existing session
@@ -128,6 +131,35 @@ const Admin = () => {
           variant: "destructive",
         });
       }
+    }
+  };
+
+  const createAdmin = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!inviteEmail) {
+      toast({ title: "Email required", description: "Please provide an email.", variant: "destructive" });
+      return;
+    }
+
+    setIsCreatingAdmin(true);
+    try {
+      const res = await fetch("/api/create-admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: inviteEmail, password: invitePassword || undefined }),
+      });
+
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+      if (!res.ok) throw new Error(data?.message || data?.error || "Failed to create admin");
+
+      toast({ title: "Admin created", description: `User ${inviteEmail} created successfully.` });
+      setInviteEmail("");
+      setInvitePassword("");
+    } catch (err: any) {
+      toast({ title: "Error", description: err.message || String(err), variant: "destructive" });
+    } finally {
+      setIsCreatingAdmin(false);
     }
   };
 
@@ -277,7 +309,7 @@ const Admin = () => {
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
       <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-advocacy-red" />
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-advocacy-red via-empowerment-purple to-advocacy-red" />
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img src={logo} alt="SECLUSA" className="h-10 w-auto" />
@@ -1098,6 +1130,39 @@ const Admin = () => {
             </motion.div>
           </TabsContent>
         </Tabs>
+        <div className="mt-8">
+          <Card className="rounded-none border-border shadow-sm">
+            <CardHeader className="border-b border-border bg-muted/30">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-advocacy-red/10 flex items-center justify-center">
+                  <Users className="w-5 h-5 text-advocacy-red" />
+                </div>
+                <div>
+                  <CardTitle className="font-display">Invite / Create Admin</CardTitle>
+                  <CardDescription>Invite a new admin by email or create an admin account directly.</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <form onSubmit={createAdmin} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div className="md:col-span-1">
+                  <label className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block font-sans">Email</label>
+                  <Input value={inviteEmail} onChange={(e) => setInviteEmail(e.target.value)} placeholder="user@example.com" />
+                </div>
+                <div className="md:col-span-1">
+                  <label className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block font-sans">Password (optional)</label>
+                  <Input type="password" value={invitePassword} onChange={(e) => setInvitePassword(e.target.value)} placeholder="leave blank to auto-generate" />
+                </div>
+                <div className="md:col-span-1 flex gap-2">
+                  <Button type="submit" className="bg-advocacy-red rounded-none" disabled={isCreatingAdmin}>
+                    {isCreatingAdmin ? "Creating..." : "Create Admin"}
+                  </Button>
+                  <Button variant="outline" onClick={() => { setInviteEmail(""); setInvitePassword(""); }} className="rounded-none">Clear</Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </main>
     </div>
   );

@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-advocacy-red/10">
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-advocacy-red" />
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-advocacy-red via-empowerment-purple to-advocacy-red" />
       <div className="container mx-auto flex items-center justify-between h-20 px-4 pt-[3px]">
         <a href="#home" onClick={(e) => { e.preventDefault(); handleAnchorClick("#home"); }} className="flex items-center gap-3">
           <img src={logo} alt="SECLUSA Logo" className="h-14 w-auto" />
